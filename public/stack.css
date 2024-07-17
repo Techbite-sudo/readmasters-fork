@@ -1,0 +1,19 @@
+.vstack {
+	display: flex;
+	flex-direction: column;
+}
+
+.hstack {
+	display: flex;
+	flex-direction: row;
+}
+
+.spacer {
+	display: flex;
+	flex: 1;
+}
+
+.dead-center-children {
+	align-items: center;
+	justify-content: center;
+}

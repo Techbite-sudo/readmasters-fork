@@ -1,0 +1,24 @@
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm install
+    build:
+      commands:
+        - env | grep -e POSTGRES_URL >> .env.production
+        - env | grep -e APP_URL >> .env.production
+        - env | grep -e _AWS_ACCESS_KEY_ID -e _AWS_SECRET_ACCESS_KEY -e _AWS_REGION -e -e >> .env.production
+        - npm run build
+  artifacts:
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**/*
+
+customHeaders:
+  - pattern: '**/*'
+    headers:
+      - key: 'Cache-Control'
+        value: 'max-age=0,no-cache,no-store,must-revalidate'
